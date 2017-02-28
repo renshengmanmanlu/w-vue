@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令</title>
+</head>
+<body>
+<div id="app">
+    <input v-wos:值.red.border="num">
+    <button @click="sj">更新</button>
+</div>
+
+<script src="../lib/vue.js"></script>
+<script>
+    Vue.directive('wos',{
+        //三个时态
+        bind:function (value) {//执行一次
+            this.el.style.color = '#ff6600';
+        },
+        update:function (newValue,oldValue) {//每次更新num的值都会执行 num帮的开关
+            console.log(this.name); //this.name  指令的名称
+            console.log(this.expression);
+            console.log(this.arg);
+            console.log(this.modifiers);
+            console.log(this.name);
+            this.el.value = "1111";
+            console.log('我被更新了');
+        },
+        unbind:function () {
+            
+        }
+    })
+    //构造器
+    new Vue({
+        el:'#app',//作用域
+        data:{ //数据中心
+            num:'1'
+        },
+        methods:{
+            sj:function () {
+                this.num++;
+            }
+        },
+        watch:{//监听数据变化
+
+        }
+    })
+</script>
+</body>
+</html>

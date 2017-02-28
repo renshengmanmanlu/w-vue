@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>methods</title>
+</head>
+<body>
+<div id="app">
+    <button v-on:click="jia">+</button>
+    <p>数量：{{ shuliang }}</p>
+    <p>单价：{{ danjia }}</p>
+    <hr>
+    <p>总价：{{ zongjia }}</p>
+    <button @click="jian">-</button>
+</div>
+
+<script src="../lib/vue.js"></script>
+<script>
+    //构造器
+    var vm = new Vue({
+        el:'#app',//作用域
+        data:{ //数据中心
+            shuliang:0,
+            danjia:10,
+            zongjia:0
+        },
+        methods:{
+            jia:function(){
+                this.shuliang ++;
+                this.zongjia = this.shuliang*this.danjia;
+            },
+            jian:function () {
+                this.shuliang --;
+                if(this.shuliang < 0){
+                    this.shuliang = 0;
+                }
+                this.zongjia = this.shuliang*this.danjia;
+            }
+        },
+        watch:{//监听数据变化
+            "shuliang":function (newval,oldval) {
+                if(this.shuliang > 3){
+                    this.zongjia = this.zongjia - this.danjia;
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

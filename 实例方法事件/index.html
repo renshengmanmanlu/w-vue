@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <p @click="add">{{  num }}</p>
+        <p><button @click="del">删除</button></p>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                message:"hello vue.js!",
+                num:1
+            },
+            methods:{
+                add:function () {
+                    vm.$emit('test','hi');
+                    this.num++
+                },
+                del:function () {
+                    vm.$off('test');
+                }
+            }
+        });
+        vm.$on('test',function (msg) {
+            console.log(msg)
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HelloWorld</title>
+</head>
+<body>
+    <div id="app">
+        <p> {{ ysjg }}</p>
+        <p><input type="text" v-model="yhjg | my-f"></p>
+        <hr>
+        <p>{{ ysjg + yhjg }}</p>
+    </div>
+
+<script src="../lib/vue.js"></script>
+<script>
+    Vue.filter('my-f',{
+        read:function (value) {//读
+            return '￥'+ value;
+        },
+        write:function (value) {//写
+            return parseInt(value);
+        }
+    });
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            ysjg:10,
+            yhjg:0
+        },
+        methods:{
+
+        }
+    })
+</script>
+</body>
+</html>

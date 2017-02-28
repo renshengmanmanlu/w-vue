@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>components</title>
+</head>
+<body>
+
+<template id="m1">
+    <p @click="hi">{{ message }} = {{ num }}</p>
+    <my-buycaybtn :my-message.sync="num"></my-buycaybtn>
+</template>
+
+<template id="m2">
+    <p>{{ myMessage }}</p>
+    <button @click="add">{{ message }}</button>
+</template>
+<div id="app">
+    <my-buycar>
+
+    </my-buycar>
+
+</div>
+
+<script src="../lib/vue.js"></script>
+<script>
+    var BuyCayBtn = Vue.extend({
+        props:['myMessage'],//父组件给子组件传值
+        data:function () {
+            return ({message:this.$parent.btnVal});
+        },
+        template :'#m2',
+        methods:{
+            add:function () {
+                this.myMessage++
+            }
+        }
+    });
+
+    //自定义组件
+    var BuyCar = Vue.extend({
+        data:function () {
+            return ({
+                message:'苹果',
+                btnVal:'按钮',
+                num:1
+            });
+        },
+        template :'#m1',
+        components:{
+            'my-buycaybtn':BuyCayBtn
+        },
+        methds:{
+            hi:function () {
+                console.log( this.$children );
+            }
+        }
+    });
+
+    new Vue({
+        el:'#app',//申名作用域
+        components:{
+            'my-buycar':BuyCar
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>methods</title>
+</head>
+<body>
+<div id="app">
+    v-if控制大的窗体显示隐藏，预加载 消耗时间
+    v-show 经常显示隐藏 消耗浏览器资源 加载速度快
+    <hr>
+    <p v-html="message" v-if="ok"></p>
+    <button @click="sh">显示/隐藏</button>
+    <input type="text" @keyup.enter="sh">
+    <input type="text" @keyup.13="sh">
+</div>
+
+<script src="../lib/vue.js"></script>
+<script>
+    //构造器
+    var vm = new Vue({
+        el:'#app',//作用域
+        data:{ //数据中心
+            message:"<b>你好!</b>",
+            ok:true
+        },
+        methods:{
+            sh:function () {
+                if(this.ok == true){
+                    this.ok = false;
+                }else{
+                    this.ok = true;
+                }
+            }
+        },
+        watch:{//监听数据变化
+
+        }
+    })
+</script>
+</body>
+</html>

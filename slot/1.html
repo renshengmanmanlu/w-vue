@@ -1,0 +1,56 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>Hello Amaze UI</title>
+
+
+    <link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css">
+</head>
+<body>
+<template id="templateId">
+    <div class="am-alert" :class="bgcolor" data-am-alert>
+        <button type="button" class="am-close">&times;</button>
+        <p><slot name="message">这里内有内容就提示我</slot></p>
+    </div>
+</template>
+
+<div id="app">
+    <cl type="warning">
+        <span slot="essage">成功渲染标签</span>
+    </cl>
+</div>
+<script src="../lib/jquery.js"></script>
+<script src="../lib/vue.js"></script>
+<script src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js"></script>
+
+<script>
+
+    var aaa = Vue.extend({//组件扩展
+        template:'#templateId',
+        props:['type'],
+        computed:{
+            bgcolor:function () {
+                return{
+                    'am-alert-success':this.type==='success',
+                    'am-alert-warning':this.type==='warning',
+                    'am-alert-danger':this.type==='danger',
+                    'am-alert-secondary':this.type==='secondary'
+                }
+            }
+        }
+    });
+    new Vue({
+        el:'#app',
+        components:{
+            'cl':aaa
+        }
+    });
+</script>
+</body>
+</html>

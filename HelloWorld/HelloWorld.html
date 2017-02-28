@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HelloWorld</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="todo in todos">
+                {{ todo.text }}
+            </li>
+        </ul>
+    </div>
+
+<script src="../lib/vue.js"></script>
+<script src="../lib/jquery.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            todos:[
+                {text:"one"},
+                {text:"two"},
+                {text:"three"},
+                {text:"4"},
+                {text:"5"}
+            ]
+        }
+    })
+    $(function(){
+        $("#app").css('color','#ff6600');
+    })
+</script>
+</body>
+</html>

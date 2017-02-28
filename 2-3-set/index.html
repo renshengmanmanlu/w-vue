@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HelloWorld</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{ car }}</p>
+        <p>{{ pen }} <button @click="delpen">X</button></p>
+        <button onclick="delpen()">删除</button>
+        <button @click="add">尝试给pen赋值</button>
+        <hr>
+    </div>
+
+<script src="../lib/vue.js"></script>
+<script>
+    var datas = {car:1};
+    var vm = new Vue({
+        el:'#app',
+        data:datas,
+        methods:{
+            delpen:function () {
+                this.pen = null;
+                console.log(this.pen);
+            },
+            add:function () {
+                this.pen = 9;
+            }
+        }
+    })
+    Vue.set(datas,'pen','2');
+    vm.$set('pen','3'); //实例化
+
+    function delpen(){
+        //Vue.delete(datas,'pen');
+        vm.$delete('pen');
+        console.log(this.pen);
+    }
+</script>
+</body>
+</html>

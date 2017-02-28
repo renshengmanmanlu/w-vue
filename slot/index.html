@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>slot分发</title>
+    <style>
+        .cup-color{
+            color: pink;
+        }
+    </style>
+</head>
+<body>
+<template id="a1">
+    <div class="cup-color"><slot name="CUP">这里是cup的内容</slot></div>
+    <slot name="CUP1">这里是cup1的内容</slot>
+    <slot name="CUP2">这里是cup2的内容</slot>
+    <slot name="CUP3">这里是cup3的内容</slot>
+    <slot name="CUP4">这里是cup4的内容</slot>
+
+</template>
+<div id="app">
+    <computer>
+        <div slor="CUP">0</div>
+        <div slor="CUP">1</div>
+        <div slor="CUP">2</div>
+        <div slor="CUP">3</div>
+        <div slor="CUP">4</div>
+    </computer>
+</div>
+<script src="../lib/vue.js"></script>
+<script>
+    var cl = Vue.extend({
+        template:'#a1'
+    })
+    new Vue({
+        el:'#app',
+        components:{//主键
+            'computer':cl
+        }
+    });
+</script>
+</body>
+</html>

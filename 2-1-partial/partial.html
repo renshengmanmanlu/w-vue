@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>partial模板</title>
+</head>
+<body>
+<div id="app">
+    <partial :name="dongtaimoban"></partial>
+</div>
+
+<script src="../lib/vue.js"></script>
+<script>
+    Vue.partial('my-div-1','<p>my-div-1</p>');
+    Vue.partial('my-div-2','<p>my-div-2</p>');
+    Vue.partial('my-div-3','<p>my-div-3</p>');
+    new Vue({
+        el:'#app',
+        data:{
+            dongtaimoban:'my-div-1'
+        }
+    })
+
+</script>
+</body>
+</html>

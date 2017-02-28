@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>life</title>
+</head>
+<body>
+<div id="app">
+
+</div>
+<hr>
+<button onclick="add()">转移vue实例</button>
+<button onclick="add()">卸载vue实例</button>
+<hr>
+<div id="app2">
+    <p>我是有文本的</p>
+</div>
+<template id="a1">
+    <div>
+        <button @click="add">{{ message }}</button>
+        <p>{{ b }} + {{ a  }} = {{ c }}</p>
+    </div>
+</template>
+<script src="../lib/vue.js"></script>
+<script>
+   var vm = new Vue({
+        el:'#app',
+        data:{
+            message:"Add a+b",
+            b:1,
+            a:2
+        },
+        template:"#a1",
+        computed:{//计算
+            c:function () {
+                return this.a + this.b;
+            }
+        },
+        methods:{//方法
+            add:function () {
+                this.a++;
+            }
+        },
+        watch:{//看 监听数据变化
+            "c":function () {
+                if(this.c>10){
+                    this.b++;
+                }
+            }
+        },//钩子函数  发生某件事就去检查某件事
+        init:function () {//初始化 环境验证 和组件效验
+            console.log("1-init");
+        },
+        created:function () {//已经完成了所有渲染之前
+            console.log("2-created");
+        },
+        beforeCompile:function () {//编译之前开始编译
+            console.log("3-beforeCompile");
+        },
+        compiled:function () {//编译结束 已经显示出来
+            console.log("4-compiled");
+        },
+        ready:function () {//插入的方法被调用
+            console.log("6-ready");
+        },
+        attached:function () {
+            console.log("5-attached");
+        },
+        detached:function () {
+            console.log("7-detached");//移除的时候
+        },
+        beforeDestroy:function () {
+            console.log("8-beforeDestroy");//开始卸载
+        },
+        destroyed:function () {
+            console.log("destroyed");//卸载完成
+        },
+    })
+    
+    function add() {
+        //vm.$appendTo("#app2");//转移
+        vm.$before("#app2");
+        vm.$after("#app2");
+    }
+
+    function del(){
+        vm.$
+    }
+</script>
+</body>
+</html>

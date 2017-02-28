@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/vue.js"></script>
+    <style>
+        .wos-transition{
+            transition: all 0.3s ease;
+            height: 30px;
+            padding: 10px;
+            background-color: aqua;
+            overflow: hidden;
+        }
+        .wos-enter{
+            height: 0;
+            padding: 0 10px;
+            opacity: 1;
+            font-size: 12px;
+
+        }
+        .wos-leave{
+            height: 0px;
+            opacity: 0;
+            font-size: 24px;
+        }
+    </style>
+</headwos
+<body>
+    <div id="app">
+        <div v-if="show" transition = 'wos'> {{message}} </div>
+        <button @click="hs">显示/隐藏</button>
+    </div>
+    <script>
+        /*动画的钩子方法*/
+        Vue.transition('wos',{
+            beforeEnter: function (el) {
+                console.log("1-beforeEnter");
+            },
+            enter: function (el) {
+                console.log("2-enter");
+            },
+            afterEnter: function (el) {
+                console.log("3-afterEnter");
+            },
+            beforeLeave: function (el) {
+                console.log("4-beforeLeave");
+            },
+            leave: function (el) {
+                console.log("5-leave");
+            },
+            afterLeave: function (el) {
+                console.log("6-afterLeave");
+            }
+
+        });
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                message:"您好！",
+                show:true
+            },
+            methods:{
+                hs:function () {
+                    this.show=!this.show;
+                }
+
+            }
+        });
+    </script>
+</body>
+</html>

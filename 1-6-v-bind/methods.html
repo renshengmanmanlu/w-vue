@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>methods</title>
+    <style>
+        img {
+            width: 20%;
+        }
+        .red{
+            color: red;
+        }
+        .class-A{
+            background-color: pink;
+        }
+        .class-B{
+            color: blue;
+        }
+        .class-C{
+            width: 100px;
+            height:100px;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <img v-bind:src="message" alt="跑车">
+    <img :src="message" alt="跑车">
+    <div :class="{red :isRed}">111111</div>
+    <div :class="[classA,classB]">22222</div>
+    <div :class="{'class-A':isA,'class-B':isB}">3333</div>
+
+    <div :class="[classA,{'class-B':isB,'class-C':isC}]">444</div>
+
+    <div :style="{fontSize:size + 'px'}">555</div>
+    <div :style="[style1,style2]">666</div>
+</div>
+
+<script src="../lib/vue.js"></script>
+<script>
+    //构造器
+    var vm = new Vue({
+        el:'#app',//作用域
+        data:{ //数据中心
+            message:"../img/pc.png",
+            isRed:false,
+            classA:'class-A',
+            classB:'class-B',
+            isA:true,
+            isB:true,
+            isC:true,
+            size:55,
+            style1:{
+                color:'red'
+            },
+            style2: {
+                fontSize: '30px'
+            }
+        },
+        methods:{
+
+        },
+        watch:{//监听数据变化
+
+        }
+    })
+</script>
+</body>
+</html>

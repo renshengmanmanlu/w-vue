@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>components</title>
+</head>
+<body>
+
+<div id="app">
+
+
+</div>
+
+<script src="../lib/vue.js"></script>
+<script>
+
+    var vm = new Vue({
+        el:'#app',//申名作用域
+        data:{
+            message:'Hello Vue.js！'
+        },
+        events:{
+            'hook:created':function () {//钩子内部调用
+                console.log('created');
+            },
+            hi:function (msg,msg2) {
+                console.log(msg+'随缘吧'+msg2);
+            },
+            bye:'goodby'
+        },
+        methods:{
+            goodby:function () {
+                //console.log('bye bye');
+                this.$emit('hi','我很好','你呢？')
+            }
+        }
+    });
+    vm.$emit('hi',"你好","好吧");
+    vm.$emit('bye')
+</script>
+</body>
+</html>

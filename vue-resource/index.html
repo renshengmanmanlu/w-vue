@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+    </div>
+<script src="../lib/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/vue.resource/1.2.0/vue-resource.min.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            message:''
+        },
+        ready:function () {
+            this.$http.get('1.text').then(function (success) {
+                console.log(success);
+                this.$set('message',success.data);
+            },function(error){
+                console.log(error.data);
+            })
+        }
+    });
+</script>
+</body>
+</html>

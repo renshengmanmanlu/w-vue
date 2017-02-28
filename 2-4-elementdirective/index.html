@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HelloWorld</title>
+</head>
+<body>
+    <div id="app">
+        <wos a="hi">This wos type</wos>
+    </div>
+
+<script src="../lib/vue.js"></script>
+<script>
+    Vue.elementDirective('wos',{
+        params:['a'],
+        bind:function (value) {//执行一次
+            this.el.style.color = '#ff6600';
+            console.log(this.params.a);
+        },
+        unbind:function () {
+            
+        },
+        paramsWatchers:{
+            "a":function () {
+                
+            }
+        }
+    });
+    var datas = {car:1};
+    var vm = new Vue({
+        el:'#app',
+        data:datas,
+        methods:{
+
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if</title>
+</head>
+<body>
+    <ul id="app">
+        5显示几个 5从第几个开始显示
+        <li v-for="item of items | limitBy 5 5">
+            {{ item.message }}
+        </li>
+        <hr>
+        filterBy 在for循环数据中进行搜索
+        <br>    filterBy '1'
+        <br>    filterBy keywords in 'message'
+        <br>    filterBy keywords 'message' 'temp'
+        <input type="text" v-model="keywords">
+        <p>搜索关键字{{ keywords }}</p>
+        <li v-for="item of items | filterBy keywords in 'message' 'id' ">
+            {{ item.message }}
+        </li>
+        <hr>
+        根据message排序 默认0 倒序 -1
+        <li v-for="item of items | orderBy 'message' 0">
+            {{ item.message }}
+        </li>
+    </ul>
+
+<script src="../lib/vue.js"></script>
+<script>
+    //构造器
+    var vm = new Vue({
+        el:'#app',//作用域
+        data:{ //数据中心
+            keywords:'',
+            items:[
+               {message:'1',id:'2'},
+               {message:'2'},
+               {message:'3'},
+               {message:'4'},
+               {message:'5'},
+               {message:'6'},
+               {message:'7'},
+               {message:'8'},
+               {message:'9'},
+               {message:'10'},
+               {message:'11'},
+               {message:'12'},
+           ]
+        }
+    })
+
+    ;
+</script>
+</body>
+</html>

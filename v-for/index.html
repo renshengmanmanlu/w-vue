@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if</title>
+</head>
+<body>
+    <ul id="app">
+        <li v-for="item of items">
+            {{ $index }}-{{ item.message}}
+        </li>
+        <li v-for="(num,item) of items">
+            {{ num }}-{{ item.message}}
+        </li>
+    </ul>
+
+<script src="../lib/vue.js"></script>
+<script>
+    //构造器
+    var vm = new Vue({
+        el:'#app',//作用域
+        data:{ //数据中心
+           items:[
+               {message:'one'},
+               {message:'two'},
+               {message:'three'},
+           ]
+        }
+    })
+    //push 向数组末尾添加元素
+    //pop  删除数组删除最后一项
+    //shift删除第一个元素
+    //unshife 向数组第一项添加一个或多个元素
+    //splies() 删除指定元素
+    vm.items.push({message:"4"});
+</script>
+</body>
+</html>

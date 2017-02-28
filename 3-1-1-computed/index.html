@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HelloWorld</title>
+</head>
+<body>
+    <div id="app">
+        <p>a = {{ a }}</p>
+        <p>b = {{ b }}</p>
+        <p>c = {{ c }}</p>
+    </div>
+
+<script src="../lib/vue.js"></script>
+<script>
+    var datas = {
+        a:1
+    };
+    var vm = new Vue({
+        el:'#app',
+        data:datas,
+        computed:{
+            b:function () {
+                return this.a + 1;
+            },
+            c:{
+                get:function () {
+                    return this.a*9;
+                },
+                set:function (val) {
+                    console.log("更新了" + val);
+                    this.a  = val;
+                }
+            }
+        }
+    });
+    vm.$watch('b',function () {
+        if (this.a == 3){
+            console.log('正中下怀');
+        }
+    });
+</script>
+</body>
+</html>
