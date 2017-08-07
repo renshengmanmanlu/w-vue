@@ -11,10 +11,12 @@
 
 <script src="../lib/vue.js"></script>
 <script>
+    //有模板  默认显示模板里边的
     var aaa = Vue.extend({
+        //必须是一个函数
         data:function(){
             return({massage:'Hello Vue.js!'})
-        },
+        }
     });
 
     var mainPlus = new aaa({

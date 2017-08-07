@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
+    <file url="file://$USER_HOME$/obj/webpack/www" libraries="{www/node_modules}" />
+    <file url="file://$USER_HOME$/obj/webpack/www2" libraries="{www2/node_modules}" />
+    <file url="file://$USER_HOME$/obj/webpack/www3" libraries="{www3/node_modules}" />
     <includedPredefinedLibrary name="ECMAScript 6" />
     <includedPredefinedLibrary name="Node.js Core" />
   </component>

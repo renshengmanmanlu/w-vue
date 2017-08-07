@@ -6,16 +6,18 @@
 </head>
 <body>
 
-<template id="m1">
-    <p @click="hi">{{ message }} = {{ num }}</p>
-    <my-buycaybtn :my-message.sync="num"></my-buycaybtn>
-</template>
+
 
 <template id="m2">
     <p>{{ myMessage }}</p>
     <button @click="add">{{ message }}</button>
 </template>
 <div id="app">
+    <template id="m1">
+        <p @click="hi">{{ message }} = {{ num }}</p>
+        <my-buycaybtn :my-message.sync="num"></my-buycaybtn>
+    </template>
+
     <my-buycar>
 
     </my-buycar>

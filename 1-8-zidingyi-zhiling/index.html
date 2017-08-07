@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HelloWorld</title>
+</head>
+<body>
+    <div id="app">
+        <input v-wos:val.red.border="num">
+        <button @click="sj">更新</button>
+    </div>
+
+<script src="../lib/vue.js"></script>
+<script>
+    Vue.directive('wos',{
+        bind:function (value) {
+            //载入的时候改变颜色
+            this.el.style.color = 'red';
+        },
+        update:function (newValue,oldValue) {
+            console.log(this.name);//指令的名称
+            console.log(this.expression);//指令赋值的键 num
+            console.log(this.arg);//val
+            console.log(this.modifiers);//属性名称对象 red border
+            var jsonObj = this.modifiers;
+            console.log(jsonObj.red);
+            console.log(this.el);//指令的名称
+            this.el.value='11111';
+            console.log('更新了');//指令的名称
+        },
+        unbind:function () {
+            //解除绑定
+        }
+    });
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            num:'1'
+        },
+        methods:{
+            sj:function () {
+                this.num  ++;
+            }
+        }
+    })
+</script>
+</body>
+</html>

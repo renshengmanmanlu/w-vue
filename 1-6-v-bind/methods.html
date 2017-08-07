@@ -21,6 +21,12 @@
             height:100px;
             color: blue;
         }
+        .btn-success{
+            color: lawngreen;
+        }
+        .btn-secondary{
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -35,6 +41,7 @@
 
     <div :style="{fontSize:size + 'px'}">555</div>
     <div :style="[style1,style2]">666</div>
+    <div :class="followed ? 'btn-success':'btn-secondary'">3333</div>
 </div>
 
 <script src="../lib/vue.js"></script>
@@ -47,6 +54,7 @@
             isRed:false,
             classA:'class-A',
             classB:'class-B',
+            followed:true,
             isA:true,
             isB:true,
             isC:true,
